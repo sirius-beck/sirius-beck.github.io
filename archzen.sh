@@ -22,11 +22,8 @@ wget https://github.com/SiriusBack/archzen/releases/download/v1.0.0/ArchZen.AppI
 
 mv ./ArchZen.AppImage /bin
 
-tee ./bin/archzen <<_EOF_
-#!/bin/bash
-/bin/ArchZen.AppImage
-_EOF_
-
+echo "#!/bin/bash" | sudo tee -a ./bin/archzen
+echo "/bin/ArchZen.AppImage" | sudo tee -a ./bin/archzen
 chmod +x /bin/archzen
 
 echo
