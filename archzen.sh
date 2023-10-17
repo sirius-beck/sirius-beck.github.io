@@ -1,11 +1,20 @@
 #!/bin/bash
+# curl -sSL https://siriusback.github.io/archzen.sh | bash
+# or
+# wget -qO- https://siriusback.github.io/archzen.sh | bash
 set -e
-sudo curl -sSO https://github.com/SiriusBack/archzen/releases/download/v1.0.0/ArchZen.AppImage &&
-    sudo chmod +x ./ArchZen.AppImage &&
-    echo "#!/bin/bash" | sudo tee -a ./archzen &&
-    echo "sudo ./ArchZen.AppImage" | sudo tee -a ./archzen &&
-    sudo chmod +x ./archzen &&
-    echo &&
-    echo "ArchZen installed successfully!" &&
-    echo "You can run using the command: ./archzen" &&
-    echo
+echo &&
+echo "Installing ArchZen..." &&
+echo &&
+pacman -S --noconfirm --needed wget &&
+wget https://github.com/SiriusBack/archzen/releases/download/v1.0.0/ArchZen.AppImage
+mv ./ArchZen.AppImage /bin &&
+tee ./bin/archzen <<_EOF_
+#!/bin/bash
+/bin/ArchZen.AppImage
+_EOF_ &&
+chmod +x /bin/archzen &&
+echo &&
+echo "ArchZen installed successfully!" &&
+echo "You can run using the command: 'archzen' or 'sudo archzen'" &&
+echo
