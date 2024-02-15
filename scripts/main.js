@@ -1,7 +1,7 @@
 const redirectToGitProfile = () => {
-  window.location = "https://github.com/SiriusBack";
+  window.location = "https://github.com/sirius-beck";
 };
 
 const redirectToArchZenRepo = () => {
-  window.location = "https://github.com/SiriusBack/ArchZen";
+  window.location = "https://github.com/sirius-beck/ArchZen";
 };
